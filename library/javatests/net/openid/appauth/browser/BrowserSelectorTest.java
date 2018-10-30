@@ -45,7 +45,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
-
+import static android.support.customtabs.CustomTabsService.ACTION_CUSTOM_TABS_CONNECTION;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(constants = BuildConfig.class, sdk=16)
@@ -468,7 +468,7 @@ public class BrowserSelectorTest {
         @Override
         public boolean matches(Intent intent) {
             return (intent != null)
-                    && (BrowserSelector.ACTION_CUSTOM_TABS_CONNECTION.equals(
+                    && (ACTION_CUSTOM_TABS_CONNECTION.equals(
                             intent.getAction()))
                     && (TextUtils.equals(mPackage, intent.getPackage()));
         }
