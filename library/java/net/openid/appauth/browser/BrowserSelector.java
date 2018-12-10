@@ -27,7 +27,6 @@ import android.os.Build.VERSION_CODES;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.VisibleForTesting;
-import static android.support.customtabs.CustomTabsService.ACTION_CUSTOM_TABS_CONNECTION;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -167,7 +166,8 @@ public final class BrowserSelector {
 
     private static boolean hasWarmupService(PackageManager pm, String packageName) {
         Intent serviceIntent = new Intent();
-        serviceIntent.setAction(ACTION_CUSTOM_TABS_CONNECTION);
+        serviceIntent.setAction(new StringBuilder("android")
+            .append(".support.customtabs.action.CustomTabsService").toString());
         serviceIntent.setPackage(packageName);
         return (pm.resolveService(serviceIntent, 0) != null);
     }
